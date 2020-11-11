@@ -6,10 +6,10 @@
 
 
 int main(){
-	char plainText[129]; // array per il plain text
-	char plainText2[129]; // array per il plain text decriptato
-	char TextE[129]; //testo criptato
-	char Key[129]; // Chiave
+	char plainText[128]; // array per il plain text
+	char plainText2[128]; // array per il plain text decriptato
+	char TextE[128]; //testo criptato
+	char Key[128]; // Chiave
 	bool test = false; // flag per uscire dal cilclo principale (Ripetizione del menù)
 	int scelta; // variabile per lo switch
 	time_t t; //Registra il tempo attuale, serve per srand e rand
@@ -21,9 +21,10 @@ int main(){
 	printf("========================\n Hello User!\nThis Program allows you to encript \nand decript your message\n========================\n");
 	
 	while(test != true){
+		
 		printf("Choose:\n- 1 Type your plain message\n- 2 Type your Key\n- 3 Generate randomly a Key\n- 4 Encrypt your message\n- 5 Decrypt your message\n- 0 To exit\n"); //Menù
 		scanf("%d", &scelta);
-		while((f=getchar())!= '\n' && f != EOF); //Ciclo azzeramento buffer
+		while((f=getchar())!= '\n' && f != EOF);//Ciclo azzeramento buffer
 		switch(scelta){
 			case 0: //Caso uscita programma
 				printf("=========================\n Bye Bye User!\n Hope to see you again ;)\n=========================\n");
@@ -31,14 +32,14 @@ int main(){
 				break;
 			case 1: //Inserimento plain text
 				printf("Type your string (MAX 128 char):\n");
-				fgets(plainText,sizeof(plainText)+1,stdin);
+				fgets(plainText,sizeof(plainText)+2,stdin);
 				break;
 			case 2: //Inserimento chiave personalizzata
 				for(c=0; c<sizeof(plainText); c++){//Azzeramento chiave in caso sia presente una precedentemente inserita
 					Key[c]=0;
 				}
 				printf("Type your Key:\n");
-				fgets(Key,129,stdin);
+				fgets(Key,sizeof(Key)+2,stdin);
 				while(testL != true){ 
 					
 					if((strlen(Key))>=(strlen(plainText))){ //Controllo lunghezza chiave non superiore al plain text
@@ -48,7 +49,7 @@ int main(){
 					}else{
 						printf("ERRORE Your Key is too short\n");
 						printf("RETYPE YOUR KEY:\n");
-						fgets(Key,sizeof(Key)+1,stdin);
+						fgets(Key,sizeof(Key)+2,stdin);
 					}
 				}
 				break;
