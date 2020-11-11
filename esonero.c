@@ -34,7 +34,7 @@ int main(){
 				fgets(plainText,sizeof(plainText)+1,stdin);
 				break;
 			case 2: //Inserimento chiave personalizzata
-				for(c=0; c<sizeof(plainText); c++){ 
+				for(c=0; c<sizeof(plainText); c++){//Azzeramento chiave in caso sia presente una precedentemente inserita
 					Key[c]=0;
 				}
 				printf("Type your Key:\n");
@@ -53,7 +53,7 @@ int main(){
 				}
 				break;
 			case 3:
-				for(c=0; c<sizeof(plainText); c++){//Azzeramento chiave in caso sia presente una precedentemente insirita
+				for(c=0; c<sizeof(plainText); c++){//Azzeramento chiave in caso sia presente una precedentemente inserita
 					Key[c]=0;
 				}
 				printf("Generating your Key\n"); //Generazione randomica della chiave
